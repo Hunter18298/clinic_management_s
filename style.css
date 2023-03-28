@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+h1,h2,h3,h4,input {
+       font-family:'Montserrat', sans-serif !important;
+       font-weight: bold;
+}
+input::placeholder,table{
+    font-family:'Montserrat', sans-serif !important;
+       font-weight: 400;
+}
+button a {
+    text-decoration: none;
+    color: #EAEAEA;
+}
+button a:hover {
+    text-decoration: none;
+    color: #EAEAEA;
+}
+a i{
+    color: #EAEAEA;
+}
+.col#first ,.col#second ,.col#third ,.col#fourth, .col#fifth, .col#sixth{
+  
+    display: none;
+}
+.row{
+     background-color: #EAEAEA;
+    
+}
+.row>*{
+   margin-top: 0;
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+}
+.up-banner{
+      padding:2% ;
+    padding-left: 20px;
+    text-align: start;
+    height:10vh ;
+    width: 100%;
+    background-color: #1E1E1E;
+    color:#FFFF
+}
+.col .up-banner{
+    height:10vh ;
+    padding: 1%;
+    float: right;
+    text-align: right ;
+}
+.image{
+    clip-path: circle();
+    background-position: center;
+    background-size: cover;
+    width: auto;
+    height: 5vh;
+ 
+}
+.horizontal-line{
+    background-color: #006BB9;
+    margin: 0;
+    padding: 0.3%;
+    padding-left: 0 !important;
+    /* border: 1px solid #006BB9; */
+}
+.options{
+    height: 88.8vh;
+    background-color: #1E1E1E;
+    padding: 20px 0;
+}
+.options-tab{
+       
+    padding:2% ;
+    padding-left: 0;
+    text-align: start;
+    height:auto ;
+    width: 100%;
+    background-color: #1E1E1E;
+    color:#FFFF
+}
+.options-btn{
+    text-align: start;
+    width: 100%;
+    font-family:'Montserrat', sans-serif !important;
+    left: 0;
+    border: transparent;
+    border-radius: 25px;
+    color: #FFFF;
+    text-decoration: none;
+    padding:2% 40%;
+    padding-left: 8%;
+    background-color: #1E1E1E;
+}
+.options-btn.active{
+ 
+    background-color: #006BB9 !important;
+}
+.fa-solid,.fa-sharp{
+    margin:15px 24px;
+}
+
+
+.main-screen{ 
+    padding:80px 20px !important; 
+}
+
+.box{
+ 
+    margin: 2% 10px;
+    float: left;
+    
+    padding-bottom: 0;
+    width: 30%;
+    background-color: #FFFF;
+    height: auto ;
+    box-shadow: 5px 20px 20px #006BB9;
+    border-radius:15px
+}
+.box-div{
+padding: 40px;
+}
+.box .fa-solid{
+    float: right;
+}
+
+.box h2{
+    display: inline-block;
+    /* padding-right: 60%; */
+    padding-top: 5%;
+}
+.box .btn{
+    text-align: center;
+    display: block;
+    position: static;
+    border-radius: 0 0 15px 15px;
+    width: 100%;
+    bottom: 0;
+}
+/*--------dentist--------------*/
+.dentist-title .btn{
+    float:right;
+    margin:0 1rem 1rem 0;
+}
+.main-dentist hr{
+    width: 100% !important;
+    height: 2px;
+}
+.main-dentist{
+        padding:80px 20px !important; 
+        padding-right: 0 !important;
+}
+.tables{
+    margin-top: 20px;
+    width: 100%;  
+  
+}
+.tables th{
+    color: #EAEAEA;
+}
+.tables td{
+padding-bottom: 3%;
+text-align: center;
+vertical-align: middle !important;
+}
+table tr th{
+    background-color: #6b6b6b;
+    vertical-align: top;
+    margin-bottom: 20px !important;
+}
+.table-status{
+    font-size: 0.8rem;
+   
+    float: left;
+    color: #EAEAEA;
+    text-align: center;
+    background-color: #006BB9;
+    border-radius: 15px;
+    padding: 0 20px;
+    padding-bottom: 0;
+    padding: 5px;
+
+}
+table tr td .btn{
+    border-radius:10px;
+}
+.actions{
+  
+    float: left;
+   justify-items: center;
+    width: auto;
+    font-size: 0.5rem;
+    padding: 0 !important;
+    margin-right: 4px;
+}
+/*--------------patient-------------*/
+.patient-title .btn{
+    float:right;
+    margin:0 1rem 1rem 0;
+}
+.main-patient hr{
+    width: 100% !important;
+    height: 2px;
+}
+.main-patient{
+        padding:80px 20px !important; 
+        padding-right: 0 !important;
+}
+.input-group .fa-solid{
+    font-size: 0.7rem;
+    padding: 0 !important;
+}
+.input-group-text{
+    padding: 0 !important;
+}
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+    border-top-right-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+    margin-right: 20px !important;
+}
+table tr td .up-banner {
+    padding: 0 !important;
+    background-color: transparent;
+    text-align: left !important;
+
+    height: 0 !important;
+    vertical-align: middle !important;
+}
+/*-------------end of Patients-------------------*/
+
+/*----------------Treatment----------------------*/
+.treatment-title .btn{
+    float:right;
+    margin:0 1rem 1rem 0;
+}
+.main-treatment hr{
+    width: 100% !important;
+    height: 2px;
+}
+.main-treatment{
+        padding:80px 20px !important; 
+        padding-right: 0 !important;
+}
+.main-treatment .tables td{
+    text-align: start;
+}
+/*----------------Appointment----------------------*/
+.appointment-title .btn{
+    float:right;
+    margin:0 1rem 1rem 0;
+}
+.main-appointment hr{
+    width: 100% !important;
+    height: 2px;
+}
+.main-appointment{
+        padding:80px 20px !important; 
+        padding-right: 0 !important;
+}
+.main-appointment .tables td{
+    text-align: start;
+}
