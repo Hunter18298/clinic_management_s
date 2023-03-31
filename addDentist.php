@@ -89,14 +89,14 @@
               <h4>Birthdate</h4>  <br>
             </div>
             <div class="col-lg-2">
-                <input type="text" name="dentist_name" id="dentist_name" autocomplete="off"><br>
+                <input type="text" name="dentist_name" required id="dentist_name" autocomplete="off"><br>
      
-<input type="text" name="dentist_address" id="dentist_address" autocomplete="off"><br>
-<input type="number" name="dentist_phone" id="dentist_phone" autocomplete="off"><br>
+<input type="text" name="dentist_address" required id="dentist_address" autocomplete="off"><br>
+<input type="number" name="dentist_phone" required id="dentist_phone" autocomplete="off"><br>
    
-<input type="email" name="dentist_email" id="dentist_email" autocomplete="off"><br>
+<input type="email" name="dentist_email" required id="dentist_email" autocomplete="off"><br>
    
-<input type="date" name="dentist_birthdate" id="dentist_birthdate" autocomplete="off"><br>
+<input type="date" name="dentist_birthdate" required id="dentist_birthdate" autocomplete="off"><br>
             </div>
                    <div class="col-lg-2">
               <h4>Degree</h4>  <br>
@@ -105,12 +105,13 @@
                
             </div>
             <div class="col-lg-2">
-                <input type="text" name="dentist_name" id="dentist_name" autocomplete="off"><br>
+                <input type="text" name="dentist_degree" required  id="dentist_degree" autocomplete="off"><br>
      
-<input type="text" name="dentist_address" id="dentist_address" autocomplete="off"><br>
-<input type="text" name="dentist_phone" id="dentist_phone" autocomplete="off"><br>
+<input type="text" name="dentist_speciality" required id="dentist_speciality" autocomplete="off"><br>
+<input type="text" name="dentist_gender" required id="dentist_gender" autocomplete="off"><br>
 
-<input class=" btn btn-primary" type="button" value="Upload an Image">
+<input class=" btn btn-primary" type="button" required value="Upload an Image">
+<button class=" btn btn-primary" type="submit">Submit</button>
             </div>
         </div>
     </div>

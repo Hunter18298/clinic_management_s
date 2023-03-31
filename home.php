@@ -2,13 +2,14 @@
 ka awish css framework achy online a loway eshakanman rektru asantr bka,
 lagal app.js "la app.js zanyariakan nusraya"-->
 <?php 
-include('connection.php');
-// ob_start();
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//   header('Location: index.php');
-// }
+include('connection.php'); 
+ob_start();
+session_start();
+if (!isset($_SESSION['username'])) {
+  header('Location: index.php');
+}
  ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -27,8 +28,13 @@ include('connection.php');
     crossorigin="anonymous"></script>
   </head>
   <body>
-         <!-- <button><a href="logout" value="<?php session_destroy(); header('location:index.php'); ?>">logout</a></button> -->
-    <!-- <h4 class="count">index</h4> -->
+   <?php
+   $dentistSql="select * from dentist";
+   $patientsSql="select * from patient";
+   $appointment="select * from appointment";
+   $dentistResult=mysqli_query($con,$dentistSql);
+   
+   ?>
     <div class="container-fluid">
           <div class="row">
        <div class="col-4">
@@ -141,28 +147,30 @@ include('connection.php');
     <th>Status</th>
     <th>Actions</th>
   </tr>
-  <tr >
+     <?php 
+
+if(mysqli_num_rows($dentistResult)>0){
+  while($row=mysqli_fetch_assoc($dentistResult))
+  {
+?>
+  <tr ></tr>
     <td><div class="up-banner">
           <img class="image" src="images/profile.jpg" alt="profile image" >
-        </div></td>
-    <td>Ali Omer</td>
+        </div>
+   
+      </td>
+    <td><?php echo $row['dentist_name'] ?></td>
     <td>Oral Surgery</td>
     <td>07504453750</td>
     <td>aliomer@gmail.com</td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
      <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
   </tr>
-  <tr>
-    <td><div class="up-banner">
-          <img class="image" src="images/profile.jpg" alt="profile image" >
-        </div></td>
-    <td>Ali Omer</td>
-    <td>Oral Surgery</td>
-    <td>07504453750</td>
-    <td>aliomer@gmail.com</td>
-    <td><button  class="table-status btn btn-primary">Active</button></td>
-    <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
-  </tr>
+  <?php 
+  }
+}
+mysqli_close($con);
+?>
  </table>
 
 

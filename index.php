@@ -26,9 +26,9 @@
              <div class="horizontal-line" style="background-color:#1E1E1E;"></div>
              <h3>Dental Clinic</h3>
              <form action="login.php" method="post">
-                <input type="text" name="username" placeholder="Enter your username" id="username" required autocomplete="off">
-                <input type="password" name="password" placeholder="Enter your password" id="password" required autocomplete="off">
-                <input class="btn btn-primary" type="submit" value="Login">
+                <input type="text" name="username" placeholder="Enter your username"  required autocomplete="off">
+                <input type="password" name="password" placeholder="Enter your password"  required autocomplete="off">
+                <input class="btn btn-primary" type="submit" value="submit">
                 <a href="home.php">
                     home
                 </a>
