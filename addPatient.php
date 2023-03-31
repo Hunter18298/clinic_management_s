@@ -91,28 +91,29 @@
                 <input type="text" name="patient_name" id="patient_name" autocomplete="off"><br>
      
 <input type="text" name="patient_address" id="patient_address" autocomplete="off"><br>
-<input type="text" name="patient_phone" id="patient_phone" autocomplete="off"><br>
+<input type="number" name="patient_phone" id="patient_phone" autocomplete="off"><br>
    
 <input type="text" name="patient_email" id="patient_email" autocomplete="off"><br>
    
-<input type="text" name="patient_birthdate" id="patient_birthdate" autocomplete="off"><br>
+<input type="date" name="patient_birthdate" id="patient_birthdate" autocomplete="off"><br>
             </div>
                    <div class="col-lg-2">
-              <h4>Degree</h4>  <br>
-              <h4>Speciality</h4> <br>
+              <h4>age</h4>  <br>
+            
               <h4>Gender</h4><br>
                
             </div>
             <div class="col-lg-2">
-                <input type="text" name="patient_name" id="patient_name" autocomplete="off"><br>
+                <input type="number" name="patient_age" id="patient_age" autocomplete="off"><br>
      
-<input type="text" name="patient_address" id="patient_address" autocomplete="off"><br>
-<input type="text" name="patient_phone" id="patient_phone" autocomplete="off"><br>
+
+<input type="text" name="patient_gender" id="patient_gender" autocomplete="off"><br>
 
 <input class=" btn btn-success" type="button" value="Upload an Image">
             </div>
         </div>
     </div>
+    <button class=" btn btn-success" type="submit">Submit</button>
  </form>
  </div>
 

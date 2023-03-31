@@ -30,9 +30,13 @@ if (!isset($_SESSION['username'])) {
   <body>
    <?php
    $dentistSql="select * from dentist";
-   $patientsSql="select * from patient";
-   $appointment="select * from appointment";
+   $patientsSql="select * from patients";
+   $appointmentSql="select * from appointment";
    $dentistResult=mysqli_query($con,$dentistSql);
+   $patientResult=mysqli_query($con,$patientsSql);
+   $appointmentResult=mysqli_query($con,$appointmentSql);
+
+
    
    ?>
     <div class="container-fluid">
@@ -188,6 +192,7 @@ mysqli_close($con);
 </div>
 
  <table class="tables">
+
   <tr>
     <th>Images</th>
     <th>Name</th>
@@ -197,24 +202,24 @@ mysqli_close($con);
     <th>Status</th>
     <th>Actions</th>
   </tr>
+  <?php
+  if(mysqli_num_rows($patientResult)>0){
+  while($row=mysqli_fetch_assoc($patientResult))
+  {
+?>
   <tr >
     <td>images</td>
-    <td>Ali Omer</td>
+    <td><?php echo $row['patient_name']; ?></td>
     <td>April 28, 1999</td>
     <td>07504453750</td>
     <td>aliomer@gmail.com</td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
      <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
   </tr>
-  <tr>
-    <td>images</td>
-    <td>Ali Omer</td>
-    <td>February 1, 2001</td>
-    <td>07504453750</td>
-    <td>aliomer@gmail.com</td>
-    <td><button  class="table-status btn btn-primary">Active</button></td>
-    <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
-  </tr>
+  <?php
+  }
+}
+?>
  </table>
       </div>
     <!------end of Patients-------------->

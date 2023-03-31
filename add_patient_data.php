@@ -1,27 +1,33 @@
 <?php 
-ob_start();
+
 include('connection.php');
 
-if(isset($_POST['submit'])){
-$dname=$_POST['dentist_name'];
-$daddress=$_POST['dentist_address'];
-$dphone=$_POST['dentist_phone'];
-$dbirthdate=$_POST['dentist_birthdate'];
-$demail=$_POST['dentist_email'];
-$ddegree=$_POST['dentist_degree'];
-$dspeciality=$_POST['dentist_speciality'];
-$dgender=$_POST['dentist_gender'];
+
+$dname=$_POST['patient_name'];
+$daddress=$_POST['patient_address'];
+$dphone=$_POST['patient_phone'];
+$dbirthdate=$_POST['patient_birthdate'];
+$demail=$_POST['patient_email'];
+$dage=$_POST['patient_age'];
+$dgender=$_POST['patient_gender'];
+echo $dage;
+echo $dname;
 echo $dgender;
-$time=time();
+echo $demail;
+echo $daddress;
+echo $dbirthdate;
+$t=time();
+$time=date("Y-m-d",$t);
 // echo $time;
-$sql="insert into dentist(dentist_name,dentist_address, dentist_contact, birthdate,gender, dentist_degree, dentist_speciality,created_time, dentist_image) values('$dname','$daddress', '$$dphone','$dbirthdate','$dgender','$$ddegree','$dspeciality','$time','any.png')";
+$sql="insert into patients(`patient_name`, `patient_email`, `patient_address`,  `patient_contact`, `birthdate`, `gender`,  `age`, `created_time`, `patient_image`,`status`) 
+values('$dname','$demail','$daddress', '$dphone','$dbirthdate','$dgender','$dage','$time','any',1)";
 if(mysqli_query($con,$sql)){
     echo "done";
-    header("location:addDentist.php");
+    header("location:home.php");
 }else{
     echo "error in connection";
-       header("Refresh:2, url=index.php");
+       header("Refresh:2, url=addpatient.php");
 }
-}
-ob_end_flush();
+
+
 ?>
