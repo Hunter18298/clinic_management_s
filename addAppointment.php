@@ -108,22 +108,26 @@
             <h4>Name</h4>  <br>
              
               <h4>Date</h4><br>
+              <h4>start time</h4><br>
             </div>
             <div class="col-lg-2" >
-              <input type="text" name="appointment_id" id="appointment_id" autocomplete="off"><br>
+              <input type="text" name="appointment_patient_id" id="appointment_id" autocomplete="off"><br>
+              
                 <input type="text" name="appointment_name" id="appointment_name" autocomplete="off"><br>  
-                <input type="text" name="appointment_date" id="appointment_date" autocomplete="off"><br>
+                
+                <input type="date" name="appointment_date" id="appointment_date" autocomplete="off"><br>
+                 <input type="text" name="start_time" id="start_time" autocomplete="off"><br>
                         
                 </div>
                   <label for="emergency">Emergency</label>          
-                <input type="radio" vale="appoinment_emergency" name="appoinment" >
+                <input type="radio" name="type" id="emergency" value="emergency"  >
                 <label for="normal">Normal</label>
-                <input type="radio" value="appoinment_normal" name="appoinment">
+                <input type="radio" name="type" id="normal" value="normal" >
                             
                         </div>
                   <div class="row justify-content-center align-items-center">
                     <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                            <input class=" btn btn-primary  " style="width: 50%;" type="submit" value="Submit"> 
+                            <input class=" btn btn-primary  " style="width: 50%;" type="submit" name="submit"> 
                     </div>
                   </div>
                     </div>

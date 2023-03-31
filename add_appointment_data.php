@@ -3,27 +3,40 @@
 include('connection.php');
 
 if(isset($_POST['submit'])){
-$dname=$_POST['dentist_name'];
-$daddress=$_POST['dentist_address'];
-$dphone=$_POST['dentist_phone'];
-$dbirthdate=$_POST['dentist_birthdate'];
-$demail=$_POST['dentist_email'];
-$ddegree=$_POST['dentist_degree'];
-$dspeciality=$_POST['dentist_speciality'];
-$dgender=$_POST['dentist_gender'];
-echo $dgender;
+$pname=$_POST['appointment_name'];
+$pappointmentId=$_POST['appointment_patient_id'];
+$appointmentdate=$_POST['appointment_date'];
+    if(!empty($_POST['type'])) {
+
+        $appointment=$_POST['type'];
+        
+      
+
+        }else{
+            echo "no data is provided";
+        }
+
+$pstarttime=$_POST['start_time'];
+
 $time=time();
-// echo $time;
-$sql="insert into dentist(dentist_name,dentist_address, dentist_contact, birthdate,gender, dentist_degree, dentist_speciality,created_time, dentist_image) values('$dname','$daddress', '$$dphone','$dbirthdate','$dgender','$$ddegree','$dspeciality','$time','any.png')";
+$sql="insert into appointment(`patient_name`,`appointment_date`,`start_time`,`status`,`appointment_patient_id`,`appointment_type`) values('$pname','$appointmentdate','$pstarttime',
+1,
+'$pappointmentId',	
+'$appointment')";
 if(mysqli_query($con,$sql)){
-    echo "done";
-    header("location:addDentist.php");
+   echo "Data Entered Successfully";
+    header("Refresh:10,url=home.php");
     
 }else{
-    echo "error in connection";
-       header("Refresh:2, url=index.php");
-       exit();
+     echo "Error: " . mysqli_error($con);
+       header("Location:addAppontment.php");
+       
 }
 }
+    
+ // Close the connection
+  mysqli_close($con);
+
+
 
 ?>

@@ -10,12 +10,7 @@ $dbirthdate=$_POST['patient_birthdate'];
 $demail=$_POST['patient_email'];
 $dage=$_POST['patient_age'];
 $dgender=$_POST['patient_gender'];
-echo $dage;
-echo $dname;
-echo $dgender;
-echo $demail;
-echo $daddress;
-echo $dbirthdate;
+
 $t=time();
 $time=date("Y-m-d",$t);
 // echo $time;
