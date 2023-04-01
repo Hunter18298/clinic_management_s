@@ -87,6 +87,7 @@
               <h4>Phone No</h4><br>
               <h4>Email</h4>  <br>
               <h4>Birthdate</h4>  <br>
+             
             </div>
             <div class="col-lg-2">
                 <input type="text" name="dentist_name" required id="dentist_name" autocomplete="off"><br>
@@ -102,16 +103,17 @@
               <h4>Degree</h4>  <br>
               <h4>Speciality</h4> <br>
               <h4>Gender</h4><br>
-               
+                <h4>password</h4> <br>
             </div>
             <div class="col-lg-2">
                 <input type="text" name="dentist_degree" required  id="dentist_degree" autocomplete="off"><br>
      
 <input type="text" name="dentist_speciality" required id="dentist_speciality" autocomplete="off"><br>
 <input type="text" name="dentist_gender" required id="dentist_gender" autocomplete="off"><br>
+<input type="text" name="dentist_password" required id="dentist_password" autocomplete="off"><br>
 
 <input class=" btn btn-primary" type="button" required value="Upload an Image">
-<button class=" btn btn-primary" type="submit">Submit</button>
+<button class=" btn btn-primary" name="submit" type="submit">Submit</button>
             </div>
         </div>
     </div>

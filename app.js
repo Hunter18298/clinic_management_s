@@ -19,7 +19,8 @@ nishan da     */
 $(document).ready(function () {
 
 options.click(function(){
-    let optionsIndex=options.index(this);
+     let optionsIndex=0;
+    optionsIndex=options.index(this);
 //    $('.count').text("index count= "+ optionsIndex);
     switch (optionsIndex) {
         case 0:

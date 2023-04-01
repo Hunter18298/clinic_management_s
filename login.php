@@ -11,8 +11,8 @@ if(isset($_SESSION['username'])){
         header("Location: home.php");
         exit();
 }else{
-
-    $u=$_POST['username'];
+if(isset($_POST['login_submit'])){
+      $u=$_POST['username'];
     $pass=$_POST['password'];
     if(empty($u) || empty($pass)){
         $error="please enter your username and password";
@@ -25,7 +25,15 @@ if(isset($_SESSION['username'])){
             
    
             $_SESSION['username']=$row['username'];
-             header("Location: home.php");
+            $_SESSION['role']=$row['role'];
+            if($row['role']=="admin"){
+                header("Location: home.php");
+                exit();
+            }else{
+                header("Location: doctors/home.php");
+                exit();
+            }
+             
 
            
         }else{
@@ -36,6 +44,8 @@ if(isset($_SESSION['username'])){
             exit();
         }
     }
+}
+  
 
 }
 

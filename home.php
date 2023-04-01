@@ -6,7 +6,12 @@ include('connection.php');
 ob_start();
 session_start();
 if (!isset($_SESSION['username'])) {
+  if($_SESSION['role']!="admin"){
+header('Location: index.php');
+exit();
+  }
   header('Location: index.php');
+exit();
 }
  ?>
 
@@ -52,6 +57,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="col">
          <div class="up-banner">
+          <a href="logout.php" style="text-decoration:none ; color:white;">logout</a>
           <img class="image" src="images/profile.jpg" alt="profile image" >
         </div>
        </div>
