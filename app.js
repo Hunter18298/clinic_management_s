@@ -29,6 +29,7 @@ options.click(function(){
              $('#fourth').css('display',"none"); 
                 $('#fifth').css('display',"none"); 
                     $('#sixth').css('display',"none"); 
+                    $('#seventh').css('display',"none");
             break;
         case 1:
              $('#first').css('display',"none");
@@ -37,6 +38,7 @@ options.click(function(){
              $('#fourth').css('display',"none"); 
                 $('#fifth').css('display',"none"); 
                 $('#sixth').css('display',"none");
+                 $('#seventh').css('display',"none");
                 break;
 
         case 2:   $('#first').css('display',"none");
@@ -45,6 +47,7 @@ options.click(function(){
                   $('#fourth').css('display',"none"); 
                 $('#fifth').css('display',"none");
                 $('#sixth').css('display',"none"); 
+                 $('#seventh').css('display',"none");
                  break;
         case 3: $('#first').css('display',"none");
                 $('#second').css('display',"none"); 
@@ -52,6 +55,8 @@ options.click(function(){
                   $('#fourth').css('display',"inline-block"); 
                 $('#fifth').css('display',"none");
                 $('#sixth').css('display',"none"); 
+                 $('#seventh').css('display',"none");
+
                 break;
         case 4: $('#first').css('display',"none");
                 $('#second').css('display',"none"); 
@@ -59,6 +64,8 @@ options.click(function(){
                   $('#fourth').css('display',"none"); 
                   $('#fifth').css('display',"inline-block");
                   $('#sixth').css('display',"none");
+                 $('#seventh').css('display',"none");
+
                 break;
         case 5: $('#first').css('display',"none");
                 $('#second').css('display',"none"); 
@@ -66,7 +73,18 @@ options.click(function(){
                   $('#fourth').css('display',"none"); 
                   $('#fifth').css('display',"none");
                   $('#sixth').css('display',"inline-block");
+                 $('#seventh').css('display',"none");
+
             break;
+              case 6: $('#first').css('display',"none");
+                $('#second').css('display',"none"); 
+                 $('#third').css('display',"none"); 
+                  $('#fourth').css('display',"none"); 
+                  $('#fifth').css('display',"none");
+                  $('#sixth').css('display',"none");
+                  $('#seventh').css('display',"inline-block");
+            break;
+            
         default:
             break;
     }

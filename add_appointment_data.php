@@ -7,11 +7,7 @@ $pname=$_POST['appointment_name'];
 $pappointmentId=$_POST['appointment_patient_id'];
 $appointmentdate=$_POST['appointment_date'];
     if(!empty($_POST['type'])) {
-
         $appointment=$_POST['type'];
-        
-      
-
         }else{
             echo "no data is provided";
         }
@@ -24,12 +20,12 @@ $sql="insert into appointment(`patient_name`,`appointment_date`,`start_time`,`st
 '$pappointmentId',	
 '$appointment')";
 if(mysqli_query($con,$sql)){
-   echo "Data Entered Successfully";
+    echo "Data Entered Successfully";
     header("Refresh:10,url=home.php");
     
 }else{
-     echo "Error: " . mysqli_error($con);
-       header("Location:addAppontment.php");
+    echo "Error: " . mysqli_error($con);
+    header("Location:addAppontment.php");
        
 }
 }

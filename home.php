@@ -307,6 +307,27 @@ mysqli_close($con);
   </tr>
  </table>
       </div>
+       <div class="col main-prescription" id="seventh">
+        <form action="prescription_generation.php" method="post">
+          
+          <label>Patient Name</label>
+          <input type="text" name="patient_name"> <br>
+            <label>Birthdate</label>
+          <input type="text" name="patient_birthdate"> <br>
+            <label> Age </label>
+          <input type="text" name="patient_age"> <br>
+  <select name="patient_gender" id="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    
+  </select>
+
+          <input class="btn btn-primary " type="submit" name="prescription" value="prescription">
+        </form>
+</div>
+
+
+       </div>
 <!--- end of row------->
 </div>
 
