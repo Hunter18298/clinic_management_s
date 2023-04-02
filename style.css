@@ -263,3 +263,8 @@ table tr td .up-banner {
 .main-appointment .tables td{
     text-align: start;
 }
+/*----------------------Doctor Profile-------------------------------*/
+
+.doctor{
+    padding: 5%;
+}
