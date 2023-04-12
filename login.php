@@ -26,6 +26,7 @@ if(isset($_POST['login_submit'])){
    
             $_SESSION['username']=$row['username'];
             $_SESSION['role']=$row['role'];
+            $_SESSION['id']=$row['id'];
             if($row['role']=="admin"){
                 header("Location: home.php");
                 exit();

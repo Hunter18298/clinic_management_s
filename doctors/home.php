@@ -6,7 +6,9 @@ include('connection.php');
 ob_start();
 session_start();
 if (!isset($_SESSION['username'])) {
-  header('Location: index.php');
+
+  header('Location: ../index.php');
+exit();
 }
  ?>
 
@@ -29,10 +31,10 @@ if (!isset($_SESSION['username'])) {
   </head>
   <body>
    <?php
-   $dentistSql="select * from dentist";
-   $patientsSql="select * from patients";
-   $appointmentSql="select * from appointment";
-   $dentistResult=mysqli_query($con,$dentistSql);
+$username=$_SESSION['username']; 
+   $patientsSql="select * from patients where `dentist_username`='$username' ";
+   $appointmentSql="select * from appointment where `dentist_username`='$username'";
+   
    $patientResult=mysqli_query($con,$patientsSql);
    $appointmentResult=mysqli_query($con,$appointmentSql);
 
@@ -52,8 +54,8 @@ if (!isset($_SESSION['username'])) {
 
         <div class="col">
          <div class="up-banner">
-          <a href="logout.php">logout</a>
-          <img class="image" src="images/profile.jpg" alt="profile image" >
+          <a href="logout.php" style="text-decoration:none ; color:white;">logout</a>
+          <img class="image" src="../images/profile.jpg" alt="profile image" >
         </div>
        </div>
       </div>
@@ -126,7 +128,6 @@ if (!isset($_SESSION['username'])) {
 </span>
       </div>
 
-<!------------------Dentist------------------------------------>
 
   
       <div class="col main-patient" id="second">
@@ -158,13 +159,15 @@ if (!isset($_SESSION['username'])) {
   {
 ?>
   <tr >
-    <td>images</td>
+    <td><div class="up-banner">
+          <img class="image" src="<?php echo $row['patient_image'] ?>" alt="profile image"  >
+        </div></td>
     <td><?php echo $row['patient_name']; ?></td>
     <td>April 28, 1999</td>
     <td>07504453750</td>
     <td>aliomer@gmail.com</td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
-     <td><a href="delete_doctor.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
+     <td><a href="delete_patient.php?id=<?php echo $row['patient_id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_patients.php?id=<?php echo $row['patient_id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
   <?php
   }
@@ -205,7 +208,7 @@ if (!isset($_SESSION['username'])) {
     <td>4,000 $ per unit</td>
     
     
-     <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
+     <td><a href="delete_treatment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_treatment.php?id=id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
  <tr >
     <td>Cosmetic Dentistry</td>
@@ -239,22 +242,26 @@ if (!isset($_SESSION['username'])) {
     <th>Status</th>
     <th>Actions</th>
   </tr>
-  <tr >
-    <td>Mahmud Ahmed</td>
-    <td>April 28, 2022</td>
-        <td>April 28, 2022</td>
-    <td>09:00 AM</td>
-    <td> <td><button  class="table-status btn btn-success">Confirmed</button></td></td>
-     <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
-  </tr>
+       <?php 
+
+if(mysqli_num_rows($appointmentResult)>0){
+  while($row=mysqli_fetch_assoc($appointmentResult))
+  {
+?>
+
  <tr >
-     <td>Hassan Mazin</td>
+     <td><?php echo $row['patient_name'] ?></td>
     <td>April 28, 2022</td>
         <td>April 28, 2022</td>
     <td>10:00 AM</td>
     <td> <td><button  class="table-status btn btn-primary">Treated</button></td></td>
-     <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
+     <td><a href="delete_appointment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_appointment.php?id=id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
+  <?php
+  }
+}
+  
+  ?>
  </table>
       </div>
        <div class="col main-prescription" id="sixth">
@@ -282,7 +289,7 @@ if (!isset($_SESSION['username'])) {
 </div>
 
   </div>
-  <script src="app.js"></script>
+  <script src="doc.js"></script>
   </body>
 
 </html>

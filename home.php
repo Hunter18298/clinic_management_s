@@ -31,6 +31,33 @@ exit();
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
+    <script>
+		$(document).ready(function() {
+			$("#searchForm").on("submit", function(event) {
+				event.preventDefault();
+				var query = $("#searchQuery").val();
+				$.ajax({
+					url: "search.php",
+					method: "POST",
+					data: {query: query},
+					dataType: "html",
+					success: function(response) {
+						$("#searchResults").html(response);
+					}
+				});
+			});
+		});
+	</script>
+    <style>
+      .image{
+    clip-path: circle();
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    width: 100% !important;
+    height: 5vh;
+}
+    </style>
   </head>
   <body>
    <?php
@@ -192,11 +219,13 @@ if(mysqli_num_rows($dentistResult)>0){
   <button class=" btn btn-primary"><a href="addPatient.php">Add Patient</a></button>
 </span>
  <br><hr>
- <div class="input-group mb-3 w-25">
-  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><i class="fa-solid fa-magnifying-glass"></i></span>
-  <input type="text" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<form id="searchForm" action="">
+   <div class="input-group mb-3 w-25">
+  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></span>
+  <input type="text" id="searchQuery" name="query" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
-
+</form>
+<div id="searchResults"></div>
  <table class="tables">
 
   <tr>
@@ -214,13 +243,15 @@ if(mysqli_num_rows($dentistResult)>0){
   {
 ?>
   <tr >
-    <td>images</td>
+    <td><div class="up-banner">
+          <img class="image" width="100%" src="<?php echo $row['patient_image'] ?>" alt="profile image"  >
+        </div></td>
     <td><?php echo $row['patient_name']; ?></td>
     <td>April 28, 1999</td>
     <td>07504453750</td>
     <td>aliomer@gmail.com</td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
-     <td><a href="delete_patient.php?id=<?php echo $row['patient_id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_patients.php?id=id=<?php echo $row['patient_id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+     <td><a href="delete_patient.php?id=<?php echo $row['patient_id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_patients.php?id=<?php echo $row['patient_id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
   <?php
   }

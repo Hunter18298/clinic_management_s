@@ -4,7 +4,6 @@
     box-sizing: border-box;
     
 }
-
 h1,h2,h3,h4,input {
        font-family:'Montserrat', sans-serif !important;
        font-weight: bold;
@@ -13,11 +12,11 @@ input::placeholder,table{
     font-family:'Montserrat', sans-serif !important;
        font-weight: 400;
 }
-
 button a {
     text-decoration: none;
     color: #EAEAEA;
 }
+
 button a:hover {
     text-decoration: none;
     color: #EAEAEA;
@@ -263,4 +262,9 @@ table tr td .up-banner {
 }
 .main-appointment .tables td{
     text-align: start;
+}
+/*----------------------Doctor Profile-------------------------------*/
+
+.doctor{
+    padding: 5%;
 }

@@ -70,7 +70,7 @@
         </span>
         <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 
       loway baynian habi w rek bn lagal yakdi -->
-    <form action="add_patient_data.php" method="post">
+    <form action="add_patient_data.php" method="post" enctype="multipart/form-data">
     <div class="container-fluid">
        
             <div class="d-flex text-center">
@@ -101,6 +101,7 @@
               <h4>age</h4>  <br>
             
               <h4>Gender</h4><br>
+              <!-- <h4>dentist username</h4><br> -->
                
             </div>
             <div class="col-lg-2">
@@ -108,8 +109,9 @@
      
 
 <input type="text" name="patient_gender" id="patient_gender" autocomplete="off"><br>
+<!-- <input type="text" name="dentist_name" id="dentist_name" autocomplete="off"><br> -->
 
-<input class=" btn btn-success" type="button" value="Upload an Image">
+<input class=" btn btn-success" type="file" name="image" accept="*" value="Upload an Image">
             </div>
         </div>
     </div>

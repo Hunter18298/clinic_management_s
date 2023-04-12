@@ -18,7 +18,7 @@ $time=date("Y-m-d",$t);
 // echo $time;
  if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
 $sql="insert into patients(`patient_name`, `patient_email`, `patient_address`,  `patient_contact`, `birthdate`, `gender`,  `age`, `created_time`, `patient_image`,`status`,`dentist_username`)
-values('$dname','$demail','$daddress', '$dphone','$dbirthdate','$dgender','$dage','$time','$target_file',1,$dentist_name)";
+values('$dname','$demail','$daddress', '$dphone','$dbirthdate','$dgender','$dage','$time','$target_file',1,'$dentist_name')";
 
 if(mysqli_query($con,$sql)){
     echo "done";
