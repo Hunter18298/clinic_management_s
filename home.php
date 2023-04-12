@@ -48,6 +48,23 @@ exit();
 			});
 		});
 	</script>
+    <script>
+		$(document).ready(function() {
+			$("#searchFormApp").on("submitApp", function(event) {
+				event.preventDefault();
+				var query = $("#searchQueryApp").val();
+				$.ajax({
+					url: "searchApp.php",
+					method: "POST",
+					data: {query: query},
+					dataType: "html",
+					success: function(response) {
+						$("#searchResultsApp").html(response);
+					}
+				});
+			});
+		});
+	</script>
     <style>
       .image{
     clip-path: circle();
@@ -312,11 +329,13 @@ if(mysqli_num_rows($dentistResult)>0){
   <button class=" btn btn-primary"><a href="addAppointment.php">Add Appointment</a></button>
 </span>
  <br><hr>
- <div class="input-group mb-3 w-25">
-  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><i class="fa-solid fa-magnifying-glass"></i></span>
-  <input type="text" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<form id="searchFormApp" action="">
+   <div class="input-group mb-3 w-25">
+  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></span>
+  <input type="text" name="query" id="searchQuery" name="query" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
-
+</form>
+<div id="searchResultsApp"></div>
  <table class="tables">
   <tr>
     <th>Patient Name</th>
