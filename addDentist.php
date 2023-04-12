@@ -71,7 +71,7 @@
         <!--form-->
                 <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 
       loway baynian habi w rek bn lagal yakdi -->
-    <form action="add_dentist_data.php" method="post">
+    <form action="add_dentist_data.php" method="post" enctype="multipart/form-data">
     <div class="container-fluid">
        
             <div class="d-flex text-center">
@@ -112,7 +112,7 @@
 <input type="text" name="dentist_gender" required id="dentist_gender" autocomplete="off"><br>
 <input type="text" name="dentist_password" required id="dentist_password" autocomplete="off"><br>
 
-<input class=" btn btn-primary" type="button" required value="Upload an Image">
+<input class=" btn btn-primary" type="file" name="image" required value="Upload an Image" accept="*.jpg">
 <button class=" btn btn-primary" name="submit" type="submit">Submit</button>
             </div>
         </div>

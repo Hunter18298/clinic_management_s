@@ -1,3 +1,14 @@
+<?php
+session_start();
+include('connection.php');
+$id=$_GET['id'];
+echo $id;
+$sql="SELECT * FROM patients WHERE patient_id='$id'";
+
+$result=mysqli_query($con,$sql);
+$row=mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -70,7 +81,7 @@
         </span>
         <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 
       loway baynian habi w rek bn lagal yakdi -->
-    <form action="add_patient_data.php" method="post">
+    <form action="update_patient.php" method="post" enctype="multipart/form-data">
     <div class="container-fluid">
        
             <div class="d-flex text-center">
@@ -88,14 +99,19 @@
               <h4>Birthdate</h4>  <br>
             </div>
             <div class="col-lg-2">
-                <input type="text" name="patient_name" id="patient_name" autocomplete="off"><br>
+                <input type="text" name="patient_name" 
+                value="<?php echo $row['patient_name'] ?>" 
+                id="patient_name" autocomplete="off"><br>
      
-<input type="text" name="patient_address" id="patient_address" autocomplete="off"><br>
-<input type="number" name="patient_phone" id="patient_phone" autocomplete="off"><br>
+<input type="text" name="patient_address" 
+value="<?php echo $row['patient_address'] ?>" 
+id="patient_address" autocomplete="off"><br>
+<input type="number" name="patient_phone" 
+value="<?php echo $row['patient_contact'] ?>" id="patient_phone" autocomplete="off"><br>
    
-<input type="text" name="patient_email" id="patient_email" autocomplete="off"><br>
+<input type="text" name="patient_email" value="<?php echo $row['patient_email'] ?>" id="patient_email" autocomplete="off"><br>
    
-<input type="date" name="patient_birthdate" id="patient_birthdate" autocomplete="off"><br>
+<input type="date" name="patient_birthdate" value="<?php echo $row['birthdate'] ?>" id="patient_birthdate" autocomplete="off"><br>
             </div>
                    <div class="col-lg-2">
               <h4>age</h4>  <br>
@@ -104,12 +120,14 @@
                
             </div>
             <div class="col-lg-2">
-                <input type="number" name="patient_age" id="patient_age" autocomplete="off"><br>
+                <input type="number" name="patient_age" value="<?php echo $row['age'] ?>" id="patient_age" autocomplete="off"><br>
      
 
-<input type="text" name="patient_gender" id="patient_gender" autocomplete="off"><br>
+<input type="text" name="patient_gender" value="<?php echo $row['gender'] ?>" id="patient_gender" autocomplete="off"><br>
+<input type="text" name="patient_gender" value="<?php echo $row['patient_id'] ?>" id="patient_gender" autocomplete="off"><br>
+<input type="text" name="dentist_name" id="dentist_name" autocomplete="off"><br>
 
-<input class=" btn btn-success" type="button" value="Upload an Image">
+<input class=" btn btn-success" type="file" name="image" value="Upload an Image">
             </div>
         </div>
     </div>
