@@ -164,7 +164,7 @@ if (!isset($_SESSION['username'])) {
     <td>07504453750</td>
     <td>aliomer@gmail.com</td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
-     <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
+     <td><a href="delete_doctor.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
   </tr>
   <?php
   }

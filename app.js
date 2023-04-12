@@ -17,7 +17,13 @@ loway display bkayna none => loway bzr bi yan inline-block loway la dasta rast
 nishan da     */
 
 $(document).ready(function () {
-
+      $('#first').css('display',"inline-block");
+            $('#second').css('display',"none");
+            $('#third').css('display',"none"); 
+             $('#fourth').css('display',"none"); 
+                $('#fifth').css('display',"none"); 
+                    $('#sixth').css('display',"none"); 
+                    $('#seventh').css('display',"none");
 options.click(function(){
      let optionsIndex=0;
     optionsIndex=options.index(this);
