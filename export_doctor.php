@@ -30,7 +30,7 @@ while ($row_data = mysqli_fetch_assoc($result)) {
 
 // Save Excel file to the server
 $objWriter =new Xlsx($objPHPExcel);;
-$objWriter->save('doctors.xlsx');
+$objWriter->save('table_data.xlsx');
 
 // Download Excel file
 header('Content-Type: application/vnd.ms-excel');

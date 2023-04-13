@@ -14,7 +14,7 @@ $result = mysqli_query($con, $query);
 $objPHPExcel = new Spreadsheet();
 
 // Set Excel worksheet properties
-$objPHPExcel->getActiveSheet()->setTitle('Table Data');
+$objPHPExcel->getActiveSheet()->setTitle('Patients');
 
 // Add data to Excel worksheet
 $column = 0;
@@ -36,6 +36,6 @@ $objWriter->save('patients.xlsx');
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename="table_data.xlsx"');
 header('Cache-Control: max-age=0');
-readfile('table_data.xlsx');
+readfile('patients.xlsx');
 exit();
 ?>

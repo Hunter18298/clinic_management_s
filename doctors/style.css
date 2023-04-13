@@ -82,6 +82,9 @@ a i{
     background-color: #1E1E1E;
     color:#FFFF
 }
+.main-prescription{
+    padding: 5% !important;
+}
 .options-btn{
     text-align: start;
     width: 100%;

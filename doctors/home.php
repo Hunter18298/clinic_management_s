@@ -28,6 +28,30 @@ exit();
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
+    <style>
+        input{
+            display: block;
+            margin: 5%;
+            border-radius: 5px;
+              box-sizing: border-box;
+            border: 0px solid #006BB9;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            box-shadow: 10px 5px 10px #47B5FF;
+            font-family:'Montserrat', sans-serif !important;
+        }
+        input:focus{
+            padding: 0 1%;
+            border:1px solid #ccc;
+        }
+        .row{
+            background-color: #FFFF;
+        }
+        .center{
+            padding: 5%;
+        }
+    </style>
   </head>
   <body>
    <?php
@@ -135,6 +159,9 @@ $username=$_SESSION['username'];
 
 <span class="patient-title">
   <button class=" btn btn-primary"><a href="addPatient.php">Add Patient</a></button>
+   <form action="export_patients.php" method="get">
+  <button class="btn exports btn-outline-success" type="submit" name="submitEXCEL" >Export</button>
+</form>
 </span>
  <br><hr>
  <div class="input-group mb-3 w-25">

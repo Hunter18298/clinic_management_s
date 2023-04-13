@@ -91,6 +91,22 @@ exit();
     width: 100% !important;
     height: 5vh;
 }
+ input{
+            display: block;
+            margin: 5%;
+            border-radius: 5px;
+              box-sizing: border-box;
+            border: 0px solid #006BB9;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            box-shadow: 10px 5px 10px #47B5FF;
+            font-family:'Montserrat', sans-serif !important;
+        }
+        input:focus{
+            padding: 0 1%;
+            border:1px solid #ccc;
+        }
     </style>
   </head>
   <body>
@@ -279,6 +295,9 @@ if(mysqli_num_rows($dentistResult)>0){
 
 <span class="patient-title">
   <button class=" btn btn-primary"><a href="addPatient.php">Add Patient</a></button>
+    <form action="export_patients.php" method="get">
+  <button class="btn exports btn-outline-success" type="submit" name="submitEXCEL" >Export</button>
+</form>
 </span>
  <br><hr>
 <form id="searchForm" action="">

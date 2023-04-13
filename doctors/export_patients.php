@@ -3,12 +3,13 @@ require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-// MySQL database connection
 session_start();
+// MySQL database connection
 include('connection.php');
 $dname=$_SESSION['username'];
+
 // Fetch data from MySQL
-$query = "SELECT * FROM patients where dentist_username='$dname'";
+$query = "SELECT * FROM patients WHERE `dentist_username`='$dname'";
 $result = mysqli_query($con, $query);
 
 
@@ -31,7 +32,7 @@ while ($row_data = mysqli_fetch_assoc($result)) {
 
 // Save Excel file to the server
 $objWriter =new Xlsx($objPHPExcel);;
-$objWriter->save('patients.xlsx');
+$objWriter->save('table_data.xlsx');
 
 // Download Excel file
 header('Content-Type: application/vnd.ms-excel');
