@@ -97,3 +97,13 @@ options.click(function(){
     }
 })
 });
+
+
+
+function showProfile() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function hideProfile() {
+  document.getElementById("popup").style.display = "none";
+}

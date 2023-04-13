@@ -65,6 +65,23 @@ exit();
 			});
 		});
 	</script>
+    <script>
+		$(document).ready(function() {
+			$("#profile").on("submit", function(event) {
+				event.preventDefault();
+			var query = $("#searchQueryApp").val();
+				$.ajax({
+					url: "doctor_profile.php",
+					method: "GET",
+					
+					dataType: "html",
+					success: function(response) {
+						$("#profile-doctor").html(response);
+					}
+				});
+			});
+		});
+	</script>
     <style>
       .image{
     clip-path: circle();
@@ -188,6 +205,9 @@ exit();
 <h1>Dentist</h1>
 <span class="dentist-title">
   <button class=" btn btn-primary"><a href="addDentist.php">Add Dentist</a></button>
+  <form action="export_doctor.php" method="get">
+  <button class="btn exports btn-outline-success" type="submit" name="submitEXCEL" >Export</button>
+</form>
 </span>
  <br><hr>
 
@@ -218,15 +238,40 @@ if(mysqli_num_rows($dentistResult)>0){
     <td>07504453750</td>
     <td>aliomer@gmail.com</td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
-     <td><a href="delete_doctor.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_doctor.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+     <td><a href="delete_doctor.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_doctor.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button class="actions btn btn-primary"></a><button name="submit" type="submit" id="profile" ><a href="doctor_profile.php?id=<?php echo $row['id']; ?>"> <i class="fa-solid fa-eye fa-xl"></i></a></button> </td>
+     <td>
+      <div id="main-content">
+  <!-- Your table and button code goes here -->
+</div>
+
+
+      <!-- onclick="showProfile()" -->
+      <!-- <div class="profile-card">
+  <img src="profile-picture.jpg" alt="Profile Picture">
+  <h1>John Doe</h1>
+  <p>Web Developer</p>
+  <button onclick="showProfile()">View Profile</button>
+</div> -->
+
+<!-- <div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="profile-picture.jpg" alt="Profile Picture">
+    <h1>John Doe</h1>
+    <p>Web Developer</p>
+    <p>Location: New York, USA</p>
+    <p>Email: johndoe@example.com</p>
+    <button onclick="hideProfile()">Close</button>
+  </div>
+</div></td> -->
   </tr>
+
   <?php 
   }
 }
 
 ?>
  </table>
-
+<div id="profile-doctor"></div>
 
       </div>
       <div class="col main-patient" id="third">
@@ -358,7 +403,7 @@ if(mysqli_num_rows($appointmentResult)>0){
         <td>April 28, 2022</td>
     <td>10:00 AM</td>
     <td> <td><button  class="table-status btn btn-primary">Treated</button></td></td>
-     <td><a href="delete_appointment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_appointment.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+     <td><a href="delete_appointment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_appointment.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a> </td>
   </tr>
   <?php
   }
@@ -393,6 +438,21 @@ if(mysqli_num_rows($appointmentResult)>0){
 
   </div>
   <script src="app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  // Attach a click event listener to the "View Profile" button
+  $('#profile').on('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+
+    // Load the doctor profile page using AJAX
+    $.get('doctor_profile.php?id=<?php echo $row["id"]; ?>', function(data) {
+      // Replace the main content with the doctor profile code
+      $('#main-content').html(data);
+    });
+  });
+});
+</script>
   </body>
 
 </html>

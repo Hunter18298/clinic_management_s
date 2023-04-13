@@ -17,6 +17,66 @@ include('connection.php');
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
+    <style>
+       .patient-info {
+      font-size: 18px;
+      margin-bottom: 50px;
+      font-weight:500;
+    }
+    /* h1{
+      font-size: 40px;
+      font-weight:bold;
+    /* }*/ 
+  	.footer {
+			background-color: #005AA7;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+		
+		.footer p {
+			margin: 0;
+			font-size: 12px;
+		} 
+		
+		.prescription {
+			margin: 20px;
+			border: 1px solid #ddd;
+			padding: 20px;
+			box-shadow: 0px 0px 5px #ddd;
+		}
+		
+		.prescription h2 {
+			margin-top: 0;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.prescription p {
+			margin: 0;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+		
+		.prescription ul {
+			margin-top: 10px;
+			margin-bottom: 0;
+			padding-left: 20px;
+			list-style-type: square;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+		
+		.prescription ul li {
+			margin-bottom: 10px;
+		}
+    </style>
 </head>
  <body>
    <div class="body-prescription">
@@ -29,19 +89,40 @@ include('connection.php');
    
    </table>
     <div class="horizontal-line"></div>
+   
 
-   <form action="">
 
-    <table>
-        <tr><th> <h3>Patient Name:</h3> </th> <td><h4>{{patient_name}}</h4> </td></tr>
-        <tr> <th> <h3> Birthdate: </h3></th> <td><h4>{{birthdate}}</h4> </td></tr>
-        <tr> <th><h3>Gender: </h3> </th> <td> <h4>{{gender}}</h4> </td>   <th> <h3> Age: </h3> </th> <td> <h4>{{age}}</h4> </td>  </tr>
 
-    </table>
-   </form>
-   </div>
+    <main class="prescription">
+        <div class="patient-info details">
+   <label>Patient Name:</label> {{patient_name}}<br>
+   <div style="height:50px;"></div>
+   <label>Birthdate:</label> {{birthdate}}<br>
+   <div style="height:50px;"></div>
+      <label>Age:</label>{{age}}<br>
+      <div style="height:50px;"></div>
+      <label>Gender:</label>{{gender}}<br>
+      <div style="height:50px;"></div>
+    </div>
+		
+		<h2>RX</h2>
+       <div style="height:250px;"></div>
+       <div style="height:250px;"></div>   
+       <div style="height:400px;"></div>
+       
+		<p><strong>Date:</strong> April 13, 2023</p>
+		
+		
+		<h2>Doctor Signiture</h2>
+		<p>.............................................................</p>
+	</main>
+
+
    <footer>
  <img class="img-footer" width="100%"  src="images/pre-footer.png">   
    </footer>
  </body>
 </html>
+
+
+
