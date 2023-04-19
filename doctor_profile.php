@@ -45,7 +45,34 @@ if ($result->num_rows > 0) {
 </head>
 <body>
    <?php
-    echo " <section class='doctor'>
+
+    echo " 
+    
+    <div class='container-fluid'>
+    
+    <div class='row'>
+    <div class='col-4'>
+     <!-- nusini sarey chap -->
+      <div class='up-banner'>
+       <h1>Cihan Clinic</h1>
+     </div>
+    </div>
+    <!-- rsmy sare lay rast -->
+
+
+     <div class='col'>
+      <div class='up-banner'>
+       <a href='logout.php' style='text-decoration:none ; color:white;'>logout</a>
+       <img class='image' src='images/profile.jpg' alt='profile image' >
+     </div>
+    </div>
+   </div>
+ </div>
+    </div>
+    
+    
+    <section class='doctor'>
+
         <div class='container-fluid' >
             <div class='row' style='background-color:white;'>
                 <div class='col-lg-6'>

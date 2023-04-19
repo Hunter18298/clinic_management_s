@@ -87,8 +87,15 @@ exit();
     clip-path: circle();
     object-fit: cover;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     width: 100% !important;
+    height: 10vh;
+}
+.image{
+    clip-path: circle();
+    background-position: center;
+    background-size: cover;
+    width: auto;
     height: 5vh;
 }
  input{
@@ -107,6 +114,13 @@ exit();
             padding: 0 1%;
             border:1px solid #ccc;
         }
+        .img-header{
+           clip-path: circle();
+    background-position: center;
+    background-size: cover;
+  
+    height: 5vh;
+        }
     </style>
   </head>
   <body>
@@ -114,7 +128,9 @@ exit();
    $dentistSql="select * from dentist";
    $patientsSql="select * from patients";
    $appointmentSql="select * from appointment";
+   $treatmentSql="select * from treatment";
    $dentistResult=mysqli_query($con,$dentistSql);
+   $treatmentResult=mysqli_query($con,$treatmentSql);
    $patientResult=mysqli_query($con,$patientsSql);
    $appointmentResult=mysqli_query($con,$appointmentSql);
 
@@ -135,7 +151,7 @@ exit();
         <div class="col">
          <div class="up-banner">
           <a href="logout.php" style="text-decoration:none ; color:white;">logout</a>
-          <img class="image" src="images/profile.jpg" alt="profile image" >
+          <img class="img-header" src="images/profile.jpg" alt="profile image" >
         </div>
        </div>
       </div>
@@ -352,7 +368,7 @@ if(mysqli_num_rows($dentistResult)>0){
         <h1>Treatment</h1>
 
 <span class="treatment-title">
-  <button class=" btn btn-primary">Add Treatment</button>
+  <button class=" btn btn-primary"><a href="addTreatment.php">Add Treatment</a></button>
 </span>
  <br><hr>
  <div class="input-group mb-3 w-25">
@@ -367,22 +383,24 @@ if(mysqli_num_rows($dentistResult)>0){
     <th>Prices</th>
     <th>Actions</th>
   </tr>
+  <?php
+  if(mysqli_num_rows($treatmentResult)>0){
+  while($row=mysqli_fetch_assoc($treatmentResult))
+  {
+?>
   <tr >
-    <td>Cosmetic Dentistry</td>
-    <td>Direct Composite Venners</td>
-    <td>4,000 $ per unit</td>
+    <td><?php echo $row['services'] ?></td>
+    <td><?php echo $row['treatment'] ?></td>
+    <td><?php echo $row['prices'] ?>$ per unit</td>
     
     
-     <td><a href="delete_treatment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_treatment.php?id=id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+     <td><a href="delete_treatment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_treatment.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
- <tr >
-    <td>Cosmetic Dentistry</td>
-    <td>Indirect Composite Venners</td>
-    <td>4,000 $ per unit</td>
-    
-   
-     <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
-  </tr>
+ 
+  <?php
+  }
+}
+  ?>
  </table>
       </div>
 
@@ -414,14 +432,24 @@ if(mysqli_num_rows($dentistResult)>0){
 if(mysqli_num_rows($appointmentResult)>0){
   while($row=mysqli_fetch_assoc($appointmentResult))
   {
+    
 ?>
 
  <tr >
      <td><?php echo $row['patient_name'] ?></td>
-    <td>April 28, 2022</td>
-        <td>April 28, 2022</td>
-    <td>10:00 AM</td>
-    <td> <td><button  class="table-status btn btn-primary">Treated</button></td></td>
+    <td><?php echo $row['sybmitted-date'] ?></td>
+        <td><?php echo $row['appointment_date'] ?></td>
+    <td><?php echo $row['start_time'] ?></td>
+    <td> <button  class="table-status btn btn-primary">
+      <?php
+      if($row['status']==0){
+        echo "Pending";
+      }else if($row['status']==1){
+        echo "confirmed";
+      }
+      
+      ?>
+    </button></td>
      <td><a href="delete_appointment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_appointment.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a> </td>
   </tr>
   <?php
@@ -440,6 +468,9 @@ if(mysqli_num_rows($appointmentResult)>0){
           <input type="text" name="patient_birthdate"> <br>
             <label> Age </label>
           <input type="text" name="patient_age"> <br>
+          <label> Description </label><br>
+          <textarea  name="description" rows="4" cols="50">
+</textarea><br>
   <select name="patient_gender" id="gender">
     <option value="male">Male</option>
     <option value="female">Female</option>
@@ -450,6 +481,16 @@ if(mysqli_num_rows($appointmentResult)>0){
         </form>
 </div>
 
+        
+       <div class="col main-prescription" id="eighth">
+   <center>
+     <a href="../../clinic_website">
+              <button class="btn btn-primary" >Go To Website</button>
+            </a>
+   </center>
+</div>  
+          
+         
 
        </div>
 <!--- end of row------->

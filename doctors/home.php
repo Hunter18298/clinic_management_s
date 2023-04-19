@@ -14,7 +14,7 @@ exit();
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+    <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,8 +28,75 @@ exit();
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
+    <script>
+		$(document).ready(function() {
+			$("#searchForm").on("submit", function(event) {
+				event.preventDefault();
+				var query = $("#searchQuery").val();
+				$.ajax({
+					url: "search.php",
+					method: "POST",
+					data: {query: query},
+					dataType: "html",
+					success: function(response) {
+						$("#searchResults").html(response);
+					}
+				});
+			});
+		});
+	</script>
+    <script>
+		$(document).ready(function() {
+			$("#searchFormApp").on("submitApp", function(event) {
+				event.preventDefault();
+				var query = $("#searchQueryApp").val();
+				$.ajax({
+					url: "searchApp.php",
+					method: "POST",
+					data: {query: query},
+					dataType: "html",
+					success: function(response) {
+						$("#searchResultsApp").html(response);
+					}
+				});
+			});
+		});
+	</script>
+    <script>
+		$(document).ready(function() {
+			$("#profile").on("submit", function(event) {
+				event.preventDefault();
+			var query = $("#searchQueryApp").val();
+				$.ajax({
+					url: "doctor_profile.php",
+					method: "GET",
+					
+					dataType: "html",
+					success: function(response) {
+						$("#profile-doctor").html(response);
+					}
+				});
+			});
+		});
+	</script>
     <style>
-        input{
+      .image{
+    clip-path: circle();
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    width: 100% !important;
+    height: 5vh;
+}
+     .img-header{
+    clip-path: circle();
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+
+    height: 5vh;
+}
+ input{
             display: block;
             margin: 5%;
             border-radius: 5px;
@@ -45,12 +112,6 @@ exit();
             padding: 0 1%;
             border:1px solid #ccc;
         }
-        .row{
-            background-color: #FFFF;
-        }
-        .center{
-            padding: 5%;
-        }
     </style>
   </head>
   <body>
@@ -58,8 +119,10 @@ exit();
 $username=$_SESSION['username']; 
    $patientsSql="select * from patients where `dentist_username`='$username' ";
    $appointmentSql="select * from appointment where `dentist_username`='$username'";
+   $treatmentSql="select * from treatment where `dentist_username`='$username'";
    
    $patientResult=mysqli_query($con,$patientsSql);
+   $treatmentResult=mysqli_query($con,$treatmentSql);
    $appointmentResult=mysqli_query($con,$appointmentSql);
 
 
@@ -79,7 +142,7 @@ $username=$_SESSION['username'];
         <div class="col">
          <div class="up-banner">
           <a href="logout.php" style="text-decoration:none ; color:white;">logout</a>
-          <img class="image" src="../images/profile.jpg" alt="profile image" >
+          <img class="img-header" src="../images/profile.jpg" alt="profile image" >
         </div>
        </div>
       </div>
@@ -164,10 +227,13 @@ $username=$_SESSION['username'];
 </form>
 </span>
  <br><hr>
- <div class="input-group mb-3 w-25">
-  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><i class="fa-solid fa-magnifying-glass"></i></span>
-  <input type="text" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<form id="searchForm" action="">
+   <div class="input-group mb-3 w-25">
+  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></span>
+  <input type="text" id="searchQuery" name="query" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
+</form>
+<div id="searchResults"></div>
 
  <table class="tables">
 
@@ -229,22 +295,23 @@ $username=$_SESSION['username'];
     <th>Prices</th>
     <th>Actions</th>
   </tr>
+    <?php
+  if(mysqli_num_rows($patientResult)>0){
+  while($row=mysqli_fetch_assoc($patientResult))
+  {
+?>
   <tr >
-    <td>Cosmetic Dentistry</td>
-    <td>Direct Composite Venners</td>
-    <td>4,000 $ per unit</td>
+    <td>  <?php echo $row['services'] ?></td>
+    <td><?php echo $row['treatment'] ?></td>
+    <td><?php echo $row['prices'] ?>$ per unit</td>
     
     
-     <td><a href="delete_treatment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_treatment.php?id=id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+     <td><a href="delete_treatment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_treatment.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
- <tr >
-    <td>Cosmetic Dentistry</td>
-    <td>Indirect Composite Venners</td>
-    <td>4,000 $ per unit</td>
-    
-   
-     <td><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></td>
-  </tr>
+   <?php
+ }
+}
+?>
  </table>
       </div>
 
@@ -255,10 +322,13 @@ $username=$_SESSION['username'];
   <button class=" btn btn-primary"><a href="addAppointment.php">Add Appointment</a></button>
 </span>
  <br><hr>
- <div class="input-group mb-3 w-25">
-  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><i class="fa-solid fa-magnifying-glass"></i></span>
-  <input type="text" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<form id="searchFormApp" action="">
+   <div class="input-group mb-3 w-25">
+  <span class="input-group-text btn-success" id="inputGroup-sizing-default "><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></span>
+  <input type="text" name="query" id="searchQuery" name="query" class="form-control" placeholder="Search...." aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
+</form>
+<div id="searchResultsApp"></div>
 
  <table class="tables">
   <tr>
@@ -300,6 +370,9 @@ if(mysqli_num_rows($appointmentResult)>0){
           <input type="text" name="patient_birthdate"> <br>
             <label> Age </label>
           <input type="text" name="patient_age"> <br>
+          <label> Description </label><br>
+          <textarea  name="description" rows="4" cols="50">
+</textarea><br>
   <select name="patient_gender" id="gender">
     <option value="male">Male</option>
     <option value="female">Female</option>

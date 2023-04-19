@@ -109,6 +109,7 @@
              
               <h4>Date</h4><br>
               <h4>start time</h4><br>
+              <h4>sybmitted_date</h4><br>
             </div>
             <div class="col-lg-2" >
               <input type="text" name="appointment_patient_id" id="appointment_id" autocomplete="off"><br>

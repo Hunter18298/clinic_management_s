@@ -106,11 +106,12 @@ include('connection.php');
     </div>
 		
 		<h2>RX</h2>
+		<h4>{{description}}</h4>
        <div style="height:250px;"></div>
        <div style="height:250px;"></div>   
-       <div style="height:400px;"></div>
+
        
-		<p><strong>Date:</strong> April 13, 2023</p>
+		<p><strong>Date:</strong> {{date}}</p>
 		
 		
 		<h2>Doctor Signiture</h2>

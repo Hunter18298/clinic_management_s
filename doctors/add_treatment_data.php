@@ -1,10 +1,9 @@
 <?php 
-
+session_start();
 include('connection.php');
 
 
-$dname=$_POST['dentist_name'];
-$id=$_POST['id'];
+$dname=$_SESSION['username'];
 $services=$_POST['services'];
 $treatment=$_POST['treatment'];
 $prices=$_POST['prices'];
@@ -14,8 +13,8 @@ $t=time();
 $time=date("Y-m-d",$t);
 // echo $time;
 
-$sql="UPDATE treatment SET `services`='$services',`treatment`='$treatment',`dentist_username`='$dname',`prices`='$prices',`updated_time`='$time' WHERE id='$id'
-";
+$sql="insert into treatment(`services`,`treatment`,`dentist_username`,`prices`,`created_time`)
+values('$services','$treatment','$dname','$prices','$time')";
 
 if(mysqli_query($con,$sql)){
     echo "done";

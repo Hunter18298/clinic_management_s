@@ -13,15 +13,15 @@ $appointmentdate=$_POST['appointment_date'];
         }
 
 $pstarttime=$_POST['start_time'];
-
-$time=time();
-$sql="insert into appointment(`patient_name`,`appointment_date`,`start_time`,`status`,`appointment_patient_id`,`appointment_type`) values('$pname','$appointmentdate','$pstarttime',
+$t=time();
+$time=date("Y-m-d",$t);
+$sql="insert into appointment(`patient_name`,`sybmitted_date`,`appointment_date`,`start_time`,`status`,`appointment_patient_id`,`appointment_type`) values('$pname','$time','$appointmentdate','$pstarttime',
 1,
 '$pappointmentId',	
 '$appointment')";
 if(mysqli_query($con,$sql)){
     echo "Data Entered Successfully";
-    header("Refresh:10,url=home.php");
+    header("location:home.php");
     
 }else{
     echo "Error: " . mysqli_error($con);

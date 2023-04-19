@@ -1,13 +1,3 @@
-<?php
-session_start();
-include('connection.php');
-$id=$_GET['id'];
-echo $id;
-$sql="SELECT * FROM treatment WHERE id='$id'";
-
-$result=mysqli_query($con,$sql);
-$row=mysqli_fetch_assoc($result);
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -81,7 +71,7 @@ $row=mysqli_fetch_assoc($result);
         <!--form-->
                 <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 
       loway baynian habi w rek bn lagal yakdi -->
-    <form action="update_treatment.php" method="post" enctype="multipart/form-data">
+    <form action="add_treatment_data.php" method="post" enctype="multipart/form-data">
     <div class="container-fluid">
        
             <div class="d-flex text-center">
@@ -95,19 +85,15 @@ $row=mysqli_fetch_assoc($result);
               <h4>Services</h4>  <br>
               <h4>Treatment</h4> <br>
               <h4>Prices</h4><br>
-              <h4>Doctor Name</h4><br>
-              <h4>ID</h4><br>
+            
        
             </div>
             <div class="col-lg-2">
-                <input type="text" name="services" required id="services" value="<?php echo $row['services']  ?>" autocomplete="off"><br>
+                <input type="text" name="services" required id="services" autocomplete="off"><br>
      
-<input type="text" name="treatment" value="<?php echo $row['treatment']  ?>"  required id="treatment" autocomplete="off"><br>
-<input type="text" name="prices" value="<?php echo $row['prices']  ?>"  required id="prices" autocomplete="off"><br>
-   
-<input type="text" name="dentist_name" value="<?php echo $row['dentist_username']  ?>"  required id="dentist_name" autocomplete="off"><br>
-<input type="text" name="id" value="<?php echo $row['id']  ?>"  required id="dentist_name" autocomplete="off"><br>
-   
+<input type="text" name="treatment" required id="treatment" autocomplete="off"><br>
+<input type="text" name="prices" required id="prices" autocomplete="off"><br>
+
 
 <button class=" btn btn-primary" name="submit" type="submit">Submit</button>
             </div>
