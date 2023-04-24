@@ -84,7 +84,7 @@ include('connection.php');
     <tr>
         <th> <img src="images/logo.png" width="130" height="100" ></td>
         <th > <h1> <b style=" color:skyblue;">Cihan</b> Clinic </h1> </td>
-        <th width="400"> <h2> <strong> Dr. </strong> anyone </h2> </td>
+        <th width="400"> <h2> <strong> Dr. </strong> {{username}} </h2> </td>
     </tr>
    
    </table>

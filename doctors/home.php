@@ -120,12 +120,17 @@ $username=$_SESSION['username'];
    $patientsSql="select * from patients where `dentist_username`='$username' ";
    $appointmentSql="select * from appointment where `dentist_username`='$username'";
    $treatmentSql="select * from treatment where `dentist_username`='$username'";
+   $prescriptionSql="select * from prescription where `dentist_username`='$username'";
+   
+   
    
    $patientResult=mysqli_query($con,$patientsSql);
+   $prescriptionResult=mysqli_query($con,$prescriptionSql);
    $treatmentResult=mysqli_query($con,$treatmentSql);
    $appointmentResult=mysqli_query($con,$appointmentSql);
-
-
+$appointmentCount=mysqli_num_rows($appointmentResult);
+  $prescriptionCount=mysqli_num_rows($prescriptionResult);
+$patientsCount=mysqli_num_rows($patientResult);
    
    ?>
     <div class="container-fluid">
@@ -188,30 +193,30 @@ $username=$_SESSION['username'];
 <h1>Dashboard</h1>
 <span class="box" style="margin-left: 0;">
   <div class="box-div">
-    <h2>22</h2><i class="fa-solid fa-clock fa-2x"></i>
+    <h2><?php echo $patientsCount ?></h2><i class="fa-solid fa-clock fa-2x"></i>
 
     <hr>
     <h5>Patients</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-patient" ><h4>More info</h4></button>
 </span>
 <span class="box" >
   <div class="box-div">
-    <h2>5</h2><i class="fa-solid fa-calendar-check fa-2x" ></i>
+    <h2><?php echo $appointmentCount ?></h2><i class="fa-solid fa-calendar-check fa-2x" ></i>
 
     <hr>
     <h5>Appoinments</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-appointment"><h4>More info</h4></button>
 </span>
 <span class="box" >
   <div class="box-div">
-    <h2>23</h2><i class="fa-sharp fa-solid fa-file-prescription fa-2x"></i>
+    <h2><?php echo $prescriptionCount  ?></h2><i class="fa-sharp fa-solid fa-file-prescription fa-2x"></i>
 
     <hr>
     <h5>Prescription</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-prescription"><h4>More info</h4></button>
 </span>
       </div>
 

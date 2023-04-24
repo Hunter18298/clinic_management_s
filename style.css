@@ -55,7 +55,7 @@ a i{
 .image{
     clip-path: circle();
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     width: auto;
     height: 5vh;
  
