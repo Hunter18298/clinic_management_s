@@ -88,6 +88,7 @@ exit();
        width: 50px; 
        height: 10%;
 
+<<<<<<< HEAD
 }
 .images{
   clip-path: circle();
@@ -95,7 +96,10 @@ exit();
     background-size: cover;
   
     height: 5vh;
+=======
+>>>>>>> 9e69e16d74e35325951022e1b101dea4d76a821c
 }
+
  input{
             display: block;
             margin: 5%;
