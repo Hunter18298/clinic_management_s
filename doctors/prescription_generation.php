@@ -15,6 +15,8 @@ if(isset($_POST['prescription'])){
     
     $t=time();
 $time=date("d-m-Y",$t);
+$sql="insert into prescription (`patient_name`,`age`,`birthdate`,`dentist_username`,`details`,`created_time`,`gender`)values('$name','$age','$birthdate','$username','$description','$time','$gender' )";
+mysqli_query($con,$sql);
 $options=new options;
 $options->setChroot(__DIR__);
 $options->setDefaultPaperSize("A4");

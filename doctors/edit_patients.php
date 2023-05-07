@@ -81,7 +81,7 @@ $row=mysqli_fetch_assoc($result);
         </span>
         <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 
       loway baynian habi w rek bn lagal yakdi -->
-    <form action="update_patient.php" method="post" enctype="multipart/form-data">
+    <form action="upadate_patients.php" method="post" enctype="multipart/form-data">
     <div class="container-fluid">
        
             <div class="d-flex text-center">
@@ -97,6 +97,7 @@ $row=mysqli_fetch_assoc($result);
               <h4>Phone No</h4><br>
               <h4>Email</h4>  <br>
               <h4>Birthdate</h4>  <br>
+              <h4>id</h4>  <br>
             </div>
             <div class="col-lg-2">
                 <input type="text" name="patient_name" 
@@ -125,7 +126,7 @@ value="<?php echo $row['patient_contact'] ?>" id="patient_phone" autocomplete="o
 
 <input type="text" name="patient_gender" value="<?php echo $row['gender'] ?>" id="patient_gender" autocomplete="off"><br>
 <input type="text" name="patient_gender" value="<?php echo $row['patient_id'] ?>" id="patient_gender" autocomplete="off"><br>
-<input type="text" name="dentist_name" id="dentist_name" autocomplete="off"><br>
+<input type="text" name="id" id="id" value="<?php echo $row['patient_id'] ?>"  autocomplete="off"><br>
 
 <input class=" btn btn-success" type="file" name="image" value="Upload an Image">
             </div>

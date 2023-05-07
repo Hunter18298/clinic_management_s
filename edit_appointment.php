@@ -7,6 +7,10 @@ $sql="SELECT * FROM appointment WHERE id='$id'";
 
 $result=mysqli_query($con,$sql);
 $row=mysqli_fetch_assoc($result);
+$type=$row['appointment_type'];
+while($data=mysqli_fetch_assoc($result)){
+  $types=$data['appointment_type'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -115,11 +119,14 @@ $row=mysqli_fetch_assoc($result);
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-2" style="margin-top: 0.2rem;">
              <h4>Patient_ID</h4> <br>  
-             <h4>Patient_ID</h4> <br>  
+             <h4>ID</h4> <br>  
             <h4>Name</h4>  <br>
              
               <h4>Date</h4><br>
               <h4>start time</h4><br>
+
+              
+              <h4>Dentist Name</h4><br>
             </div>
             <div class="col-lg-2" >
               <input type="text" name="appointment_patient_id" id="appointment_id" value="<?php echo $row['appointment_patient_id'] ?>" autocomplete="off"><br>
@@ -130,12 +137,13 @@ $row=mysqli_fetch_assoc($result);
                 <input type="date" name="appointment_date" value="<?php echo $row['appointment_date'] ?>" id="appointment_date" autocomplete="off"><br>
                  <input type="text" name="start_time" value="<?php echo $row['start_time'] ?>" id="start_time" autocomplete="off"><br>
                  <input type="text" name="dentist_name" value="<?php echo $row['dentist_username'] ?>" id="start_time" autocomplete="off"><br>
+                 
                         
                 </div>
                   <label for="emergency">Emergency</label>          
-                <input type="radio"  name="type" id="emergency" value="emergency"  >
+                <input type="radio"  name="type" id="emergency" value="emergency"  <?php if($type=="emergency") echo "checked";?>>
                 <label for="normal">Normal</label>
-                <input type="radio"  name="type" id="normal" value="normal" >
+                <input type="radio"  name="type" id="normal" value="normal" <?php if($type=="normal") echo "checked";?>>
                             
                         </div>
                   <div class="row justify-content-center align-items-center">

@@ -120,12 +120,17 @@ $username=$_SESSION['username'];
    $patientsSql="select * from patients where `dentist_username`='$username' ";
    $appointmentSql="select * from appointment where `dentist_username`='$username'";
    $treatmentSql="select * from treatment where `dentist_username`='$username'";
+   $prescriptionSql="select * from prescription where `dentist_username`='$username'";
+   
+   
    
    $patientResult=mysqli_query($con,$patientsSql);
+   $prescriptionResult=mysqli_query($con,$prescriptionSql);
    $treatmentResult=mysqli_query($con,$treatmentSql);
    $appointmentResult=mysqli_query($con,$appointmentSql);
-
-
+$appointmentCount=mysqli_num_rows($appointmentResult);
+  $prescriptionCount=mysqli_num_rows($prescriptionResult);
+$patientsCount=mysqli_num_rows($patientResult);
    
    ?>
     <div class="container-fluid">
@@ -188,30 +193,30 @@ $username=$_SESSION['username'];
 <h1>Dashboard</h1>
 <span class="box" style="margin-left: 0;">
   <div class="box-div">
-    <h2>22</h2><i class="fa-solid fa-clock fa-2x"></i>
+    <h2><?php echo $patientsCount ?></h2><i class="fa-solid fa-clock fa-2x"></i>
 
     <hr>
     <h5>Patients</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-patient" ><h4>More info</h4></button>
 </span>
 <span class="box" >
   <div class="box-div">
-    <h2>5</h2><i class="fa-solid fa-calendar-check fa-2x" ></i>
+    <h2><?php echo $appointmentCount ?></h2><i class="fa-solid fa-calendar-check fa-2x" ></i>
 
     <hr>
     <h5>Appoinments</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-appointment"><h4>More info</h4></button>
 </span>
 <span class="box" >
   <div class="box-div">
-    <h2>23</h2><i class="fa-sharp fa-solid fa-file-prescription fa-2x"></i>
+    <h2><?php echo $prescriptionCount  ?></h2><i class="fa-sharp fa-solid fa-file-prescription fa-2x"></i>
 
     <hr>
     <h5>Prescription</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-prescription"><h4>More info</h4></button>
 </span>
       </div>
 
@@ -256,9 +261,9 @@ $username=$_SESSION['username'];
           <img class="image" src="<?php echo $row['patient_image'] ?>" alt="profile image"  >
         </div></td>
     <td><?php echo $row['patient_name']; ?></td>
-    <td>April 28, 1999</td>
-    <td>07504453750</td>
-    <td>aliomer@gmail.com</td>
+    <td><?php echo $row['birthdate']; ?></td>
+    <td><?php echo $row['patient_contact']; ?></td>
+    <td><?php echo $row['patient_email']; ?></td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
      <td><a href="delete_patient.php?id=<?php echo $row['patient_id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_patients.php?id=<?php echo $row['patient_id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
@@ -348,11 +353,18 @@ if(mysqli_num_rows($appointmentResult)>0){
 
  <tr >
      <td><?php echo $row['patient_name'] ?></td>
-    <td>April 28, 2022</td>
-        <td>April 28, 2022</td>
-    <td>10:00 AM</td>
-    <td> <td><button  class="table-status btn btn-primary">Treated</button></td></td>
-     <td><a href="delete_appointment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_appointment.php?id=id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
+    <td><?php echo $row['sybmitted-date'] ?></td>
+        <td><?php echo $row['appointment_date'] ?></td>
+    <td><?php echo $row['start_time'] ?></td>
+    <td> <td><button  class="table-status btn btn-primary">   <?php
+      if($row['status']==0){
+        echo "Pending";
+      }else if($row['status']==1){
+        echo "confirmed";
+      }
+      
+      ?></button></td></td>
+     <td><a href="delete_appointment.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_appointment.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button></a></td>
   </tr>
   <?php
   }

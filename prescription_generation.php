@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('connection.php');
 
 require __DIR__ ."/vendor/autoload.php"; 
@@ -10,16 +11,18 @@ if(isset($_POST['prescription'])){
     $age=$_POST['patient_age'];
     $gender=$_POST['patient_gender'];
     $description=$_POST['description'];
-
+    $username="admin";
     
     $t=time();
 $time=date("d-m-Y",$t);
+$sql="insert into prescription (`patient_name`,`age`,`birthdate`,`dentist_username`,`details`,`created_time`,`gender`)values('$name','$age','$birthdate','$username','$description','$time','$gender' )";
+mysqli_query($con,$sql);
 $options=new options;
 $options->setChroot(__DIR__);
 $options->setDefaultPaperSize("A4");
 $dompdf=new Dompdf($options);
 $html=file_get_contents("prescription.php");
-$html=str_replace(["{{patient_name}}","{{birthdate}}","{{age}}","{{gender}}","{{date}}","{{description}}"],[$name,$birthdate,$age,$gender,$time,$description],$html);
+$html=str_replace(["{{patient_name}}","{{birthdate}}","{{age}}","{{gender}}","{{date}}","{{description}}","{{username}}"],[$name,$birthdate,$age,$gender,$time,$description,$username],$html);
 $dompdf->loadHtml($html);
 //render pdf
 $dompdf->render();

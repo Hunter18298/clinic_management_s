@@ -66,7 +66,7 @@
     <!--yellowButton-->
     <!-- button a loway bgaretawa home.php -->
      <span >
-          <a href="home.php">  <button class="btn btn-warning"><i class="fa-solid fa-house"></i></button></a>
+        <button class="btn btn-warning"><i class="fa-solid fa-house" onClick="history.back()"></i></button>
         </span>
         <!--form-->
                 <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 

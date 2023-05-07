@@ -15,6 +15,48 @@ yanish appoinment y dagrin awman peshan da lalay rast
 harwaha lahar section ak la home.php yak(id) man dayta section akan
 loway display bkayna none => loway bzr bi yan inline-block loway la dasta rast
 nishan da     */
+//more info dashboard to show patients
+$(document).ready(function(){
+  $(".show-patient").click(function(){
+           $('#first').css('display',"none");
+                $('#second').css('display',"none"); 
+                 $('#third').css('display',"inline-block"); 
+                  $('#fourth').css('display',"none"); 
+                $('#fifth').css('display',"none");
+                $('#sixth').css('display',"none"); 
+                 $('#seventh').css('display',"none");
+                  $('#eighth').css('display',"none");
+  });
+});
+//more info dashboard to show appointment
+$(document).ready(function(){
+  $(".show-appointment").click(function(){
+      $('#first').css('display',"none");
+                $('#second').css('display',"none"); 
+                 $('#third').css('display',"none"); 
+                  $('#fourth').css('display',"none"); 
+                  $('#fifth').css('display',"none");
+                  $('#sixth').css('display',"inline-block");
+                 $('#seventh').css('display',"none");
+     
+       
+  });
+});
+//more info dashboard to show prescription
+$(document).ready(function(){
+  $(".show-prescription").click(function(){
+        
+$('#first').css('display',"none");
+                $('#second').css('display',"none"); 
+                 $('#third').css('display',"none"); 
+                  $('#fourth').css('display',"none"); 
+                  $('#fifth').css('display',"none");
+                  $('#sixth').css('display',"none");
+                  $('#seventh').css('display',"inline-block");
+                   $('#eighth').css('display',"none");
+  });
+});
+
 
 $(document).ready(function () {
       $('#first').css('display',"inline-block");

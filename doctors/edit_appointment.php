@@ -1,3 +1,14 @@
+<?php
+session_start();
+include('connection.php');
+$id=$_GET['id'];
+echo $id;
+$sql="SELECT * FROM `appointment` WHERE id='$id'";
+
+$result=mysqli_query($con,$sql);
+$row=mysqli_fetch_assoc($result);
+$type=$row['appointment_type'];
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -91,7 +102,7 @@
         <!--form-->
                 <!-- Formaka 1 row u 2 column a ka dabash kraya ba bootsrap css y 
       loway baynian habi w rek bn lagal yakdi -->
-    <form action="add_appointment_data.php" method="post">
+    <form action="update_appointment.php" method="post">
     <div class="container-fluid justify-content-center align-items-center">
        
             <div class="d-flex text-center justify-content-center align-items-center">
@@ -105,24 +116,28 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-2" style="margin-top: 0.2rem;">
              <h4>Patient_ID</h4> <br>  
+             <h4>ID</h4> <br>  
             <h4>Name</h4>  <br>
              
               <h4>Date</h4><br>
               <h4>start time</h4><br>
+             
             </div>
             <div class="col-lg-2" >
-              <input type="text" name="appointment_patient_id" id="appointment_id" autocomplete="off"><br>
+              <input type="text" name="appointment_patient_id" id="appointment_id" value="<?php echo $row['appointment_patient_id'] ?>" autocomplete="off"><br>
+              <input type="text" name="id" id="id" value="<?php echo $row['id'] ?>" autocomplete="off"><br>
               
-                <input type="text" name="appointment_name" id="appointment_name" autocomplete="off"><br>  
+                <input type="text" name="appointment_name" value="<?php echo $row['patient_name'] ?>" id="appointment_name" autocomplete="off"><br>  
                 
-                <input type="date" name="appointment_date" id="appointment_date" autocomplete="off"><br>
-                 <input type="text" name="start_time" id="start_time" autocomplete="off"><br>
+                <input type="date" name="appointment_date" value="<?php echo $row['appointment_date'] ?>" id="appointment_date" autocomplete="off"><br>
+                 <input type="text" name="start_time" value="<?php echo $row['start_time'] ?>" id="start_time" autocomplete="off"><br>
+              
                         
                 </div>
-                  <label for="emergency">Emergency</label>          
-                <input type="radio" name="type" id="emergency" value="emergency"  >
+                <label for="emergency">Emergency</label>          
+                <input type="radio"  name="type" id="emergency" value="emergency"  <?php if($type=="emergency") echo "checked";?>>
                 <label for="normal">Normal</label>
-                <input type="radio" name="type" id="normal" value="normal" >
+                <input type="radio"  name="type" id="normal" value="normal" <?php if($type=="normal") echo "checked";?>>
                             
                         </div>
                   <div class="row justify-content-center align-items-center">

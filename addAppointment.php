@@ -118,7 +118,7 @@
                 
                 <input type="date" name="appointment_date" id="appointment_date" autocomplete="off"><br>
                  <input type="text" name="start_time" id="start_time" autocomplete="off"><br>
-                        
+                 <input type="date" name="sybmitted-date" id="start_time" autocomplete="off"><br>     
                 </div>
                   <label for="emergency">Emergency</label>          
                 <input type="radio" name="type" id="emergency" value="emergency"  >

@@ -1,8 +1,8 @@
 <?php 
-
+session_start();
 include('connection.php');
 
-
+$id=$_POST['id'];
 $dname=$_POST['patient_name'];
 $daddress=$_POST['patient_address'];
 $dphone=$_POST['patient_phone'];
@@ -17,8 +17,11 @@ $t=time();
 $time=date("Y-m-d",$t);
 // echo $time;
  if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
-$sql="insert into patients(`patient_name`, `patient_email`, `patient_address`,  `patient_contact`, `birthdate`, `gender`,  `age`, `created_time`, `patient_image`,`status`,`dentist_username`)
-values('$dname','$demail','$daddress', '$dphone','$dbirthdate','$dgender','$dage','$time','$target_file',1,$dentist_name)";
+$sql="UPDATE  patients SET `patient_name`='$dname', 
+`patient_email`='$demail', `patient_address`='$daddress',  `patient_contact`= '$dphone',
+ `birthdate`='$dbirthdate', `gender`='$dgender',  `age`='$dage', `created_time`='$time',
+  `patient_image`='$target_file',`status`=1
+ WHERE patient_id='$id'";
 
 if(mysqli_query($con,$sql)){
     echo "done";

@@ -24,8 +24,19 @@ if(mysqli_query($con,$sql) && mysqli_query($con,$createUserSql)){
     echo "done";
     header("location:home.php");
 }else{
-    echo "error in connection";
-       header("Refresh:2, url=addDentist.php");
+    echo "<script>
+    history.back();
+    $('#first').css('display','inline-block');
+    $('#second').css('display','none');
+    $('#third').css('display','none'); 
+     $('#fourth').css('display','none'); 
+        $('#fifth').css('display','none'); 
+            $('#sixth').css('display','none'); 
+            $('#seventh').css('display','none');
+             $('#eighth').css('display','none');
+    </script>";
+    // echo "error in connection";
+    //    header("Refresh:2, url=addDentist.php");
 }
 
 } else{

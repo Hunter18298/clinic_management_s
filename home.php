@@ -84,18 +84,16 @@ exit();
 	</script>
     <style>
       .image{
-    clip-path: circle();
-    object-fit: cover;
-    background-position: center;
-    background-size: contain;
-    width: 100% !important;
-    height: 10vh;
+       border-radius: 50%;
+       width: 50px; 
+       height: 10%;
+
 }
-.image{
-    clip-path: circle();
+.images{
+  clip-path: circle();
     background-position: center;
     background-size: cover;
-    width: auto;
+  
     height: 5vh;
 }
  input{
@@ -129,11 +127,15 @@ exit();
    $patientsSql="select * from patients";
    $appointmentSql="select * from appointment";
    $treatmentSql="select * from treatment";
+      $prescriptionSql="select * from prescription ";
    $dentistResult=mysqli_query($con,$dentistSql);
    $treatmentResult=mysqli_query($con,$treatmentSql);
    $patientResult=mysqli_query($con,$patientsSql);
+    $prescriptionResult=mysqli_query($con,$prescriptionSql);
    $appointmentResult=mysqli_query($con,$appointmentSql);
-
+$appointmentCount=mysqli_num_rows($appointmentResult);
+  $prescriptionCount=mysqli_num_rows($prescriptionResult);
+$patientsCount=mysqli_num_rows($patientResult);
 
    
    ?>
@@ -203,30 +205,30 @@ exit();
 <h1>Dashboard</h1>
 <span class="box" style="margin-left: 0;">
   <div class="box-div">
-    <h2>22</h2><i class="fa-solid fa-clock fa-2x"></i>
+    <h2><?php echo $patientsCount ?></h2><i class="fa-solid fa-clock fa-2x"></i>
 
     <hr>
     <h5>Patients</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-patient"><h4>More info</h4></button>
 </span>
 <span class="box" >
   <div class="box-div">
-    <h2>5</h2><i class="fa-solid fa-calendar-check fa-2x" ></i>
+    <h2><?php echo $appointmentCount ?></h2><i class="fa-solid fa-calendar-check fa-2x" ></i>
 
     <hr>
     <h5>Appoinments</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-appointment"><h4>More info</h4></button>
 </span>
 <span class="box" >
   <div class="box-div">
-    <h2>23</h2><i class="fa-sharp fa-solid fa-file-prescription fa-2x"></i>
+    <h2><?php echo $prescriptionCount  ?></h2><i class="fa-sharp fa-solid fa-file-prescription fa-2x"></i>
 
     <hr>
     <h5>Prescription</h5>
   </div>
-    <button class="btn btn-primary"><h4>More info</h4></button>
+    <button class="btn btn-primary show-prescription"><h4>More info</h4></button>
 </span>
       </div>
 
@@ -260,15 +262,12 @@ if(mysqli_num_rows($dentistResult)>0){
   {
 ?>
   <tr ></tr>
-    <td><div class="up-banner">
-          <img class="image" src="<?php echo $row['dentist_image'] ?>" alt="profile image"  >
-        </div>
-   
+    <td>  <img class="image" src="<?php echo $row['dentist_image'] ?>" alt="profile image"  >
       </td>
     <td><?php echo $row['dentist_name'] ?></td>
-    <td>Oral Surgery</td>
-    <td>07504453750</td>
-    <td>aliomer@gmail.com</td>
+    <td><?php echo $row['dentist_speciality'] ?></td>
+    <td><?php echo $row['dentist_contact'] ?></td>
+    <td><?php echo $row['dentist_email'] ?></td>
     <td><button  class="table-status btn btn-primary ">Active</button></td>
      <td><a href="delete_doctor.php?id=<?php echo $row['id']; ?>"><button class="actions btn btn-danger"><i class="fa-sharp fa-solid fa-trash "></i></button></a><a href="edit_doctor.php?id=<?php echo $row['id']; ?>"><button  class="actions btn btn-danger"><i class="fa-solid fa-pen-to-square"></i></button class="actions btn btn-primary"></a><button name="submit" type="submit" id="profile" ><a href="doctor_profile.php?id=<?php echo $row['id']; ?>"> <i class="fa-solid fa-eye fa-xl"></i></a></button> </td>
      <td>
@@ -341,7 +340,7 @@ if(mysqli_num_rows($dentistResult)>0){
 ?>
   <tr >
     <td><div class="up-banner">
-          <img class="image" width="100%" src="<?php echo $row['patient_image'] ?>" alt="profile image"  >
+          <img class="images" width="100%" src="<?php echo $row['patient_image'] ?>" alt="profile image"  >
         </div></td>
     <td><?php echo $row['patient_name']; ?></td>
     <td>April 28, 1999</td>

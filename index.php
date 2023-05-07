@@ -29,9 +29,7 @@
                 <input type="text" name="username" placeholder="Enter your username"  required autocomplete="off">
                 <input type="password" name="password" placeholder="Enter your password"  required autocomplete="off">
                 <input class="btn btn-primary" type="submit" name="login_submit" value="Login">
-                <a href="home.php">
-                    home
-                </a>
+              
              </form>
         </div>
   </div>
